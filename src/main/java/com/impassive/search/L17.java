@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/** @author impassivey */
+/**
+ * @see <a
+ *     href="https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/description/">leetcode</a>
+ * @author impassivey
+ */
 public class L17 {
 
   private static final String[] KEY = {
