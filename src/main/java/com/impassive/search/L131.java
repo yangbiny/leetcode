@@ -13,31 +13,33 @@ public class L131 {
 
   static class Solution {
     public List<List<String>> partition(String s) {
-      if (s == null || s.length() == 0) {
+      if(s == null || s.length() == 0){
         return new ArrayList<>();
       }
       List<List<String>> result = new ArrayList<>();
-      dfs(result, new ArrayList<String>(), s);
+      backtrack(result, new ArrayList<String>(), s);
       return result;
     }
 
-    private void dfs(List<List<String>> result, List<String> values, String str) {
+    private void backtrack(List<List<String>> result, List<String> values, String str) {
       if (str.length() == 0) {
         result.add(new ArrayList<>(values));
         return;
       }
+
       for (int i = 0; i < str.length(); i++) {
-        if (isRollBackStr(str.substring(0, i + 1))) {
-          values.add(str.substring(0, i + 1));
-          dfs(result, values, str.substring(i + 1));
+        String sub = str.substring(0, i + 1);
+        if (palindrome(sub)) {
+          values.add(sub);
+          backtrack(result, values, str.substring(i + 1));
           values.remove(values.size() - 1);
         }
       }
     }
 
-    private boolean isRollBackStr(String str) {
+    private boolean palindrome(String str) {
       if (str.length() == 0) {
-        return false;
+        return true;
       }
       int start = 0;
       int end = str.length() - 1;
