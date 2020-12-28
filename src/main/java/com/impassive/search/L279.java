@@ -1,6 +1,5 @@
 package com.impassive.search;
 
-import com.google.common.collect.Lists;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -10,7 +9,7 @@ import java.util.Queue;
 public class L279 {
 
   public static void main(String[] args) {
-    int result = new Solution().numSquares(12);
+    int result = new Solution().numSquares(14);
     System.out.println(result);
   }
 
