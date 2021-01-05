@@ -1,7 +1,5 @@
 package com.impassive.dp;
 
-import java.util.Arrays;
-
 /** @author impassivey */
 public class L322 {
 
