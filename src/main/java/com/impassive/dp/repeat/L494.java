@@ -14,7 +14,7 @@ public class L494 {
       for (int num : nums) {
         sum += num;
       }
-      if (sum < target || sum % 2 == 1) {
+      if (sum < target || (sum + target) % 2 == 1) {
         return 0;
       }
       int tmp = (target + sum) / 2;
