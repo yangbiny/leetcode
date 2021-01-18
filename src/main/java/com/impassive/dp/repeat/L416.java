@@ -26,7 +26,9 @@ public class L416 {
       int target = sum / 2;
       boolean[] dp = new boolean[target + 1];
       for (int num : nums) {
-        dp[num] = true;
+        if (num <= target) {
+          dp[num] = true;
+        }
         for (int j = target; j >= num; j--) {
           dp[j] = dp[j] || dp[j - num];
         }
