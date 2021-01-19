@@ -5,10 +5,11 @@ public class L494 {
 
   public static void main(String[] args) {
     int[] nums = {1, 1, 1, 1, 1};
-    System.out.println(new Solution().findTargetSumWays(nums, 3));
+    Solution solution = new Solution();
+    System.out.println(solution.findTargetSumWays(nums, 3));
   }
 
-  static class Solution {
+  static class Solution implements Cloneable {
     public int findTargetSumWays(int[] nums, int target) {
       int sum = 0;
       for (int num : nums) {
