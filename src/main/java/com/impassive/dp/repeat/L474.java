@@ -10,6 +10,9 @@ public class L474 {
 
   static class Solution {
     public int findMaxForm(String[] strs, int m, int n) {
+      if (strs.length == 0) {
+        return 0;
+      }
       int[][] dp = new int[m + 1][n + 1];
       for (String str : strs) {
         int zero = 0;
