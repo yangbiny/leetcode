@@ -19,7 +19,9 @@ public class L139 {
       for (int i = 1; i <= n; i++) {
         for (String dict : wordDict) {
           int len = dict.length();
+          // 如果从 i 开始的 len长度与字典中的数据相同，则可以拆分
           if (len <= i && dict.equals(s.substring(i - len, i))) {
+            // 可以拆分为dp[i]（之前有一个已经可以的情况），或者是减去当前的长度的字符串（因为当前长度的字符串是相等的）
             dp[i] = dp[i] || dp[i - len];
           }
         }
