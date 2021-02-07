@@ -1,4 +1,4 @@
-package com.impassive.cache;
+package com.impassive.lock;
 
 import java.util.HashMap;
 import java.util.Map;
