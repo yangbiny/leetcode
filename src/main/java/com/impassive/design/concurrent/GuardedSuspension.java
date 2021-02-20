@@ -56,6 +56,7 @@ public class GuardedSuspension {
       try {
         // 使用while是因为唤醒后需要再次确认条件是否满足
         while (!test.test(object)) {
+          // 等待通知
           condition.await();
         }
       } catch (InterruptedException e) {
