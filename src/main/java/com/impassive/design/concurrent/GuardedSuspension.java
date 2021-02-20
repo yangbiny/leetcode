@@ -44,6 +44,7 @@ public class GuardedSuspension {
     }
 
     public static <K, T> void fire(K key, T value) {
+      @SuppressWarnings("unchecked")
       Guarded<T> guarded = GUARDED_MAP.remove(key);
       if (guarded != null) {
         guarded.changeObject(value);
