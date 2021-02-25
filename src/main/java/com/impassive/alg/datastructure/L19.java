@@ -1,7 +1,7 @@
 package com.impassive.alg.datastructure;
 
 /** @author impassivey */
-public class L9 {
+public class L19 {
   public static void main(String[] args) {
     ListNode head = new ListNode(1);
     ListNode temp = head;
