@@ -18,16 +18,11 @@ public class L9 {
         return null;
       }
       ListNode quick = head;
-      while (n > 0 && quick.next != null) {
-        n--;
+      while (n-- > 0) {
         quick = quick.next;
       }
-      if (n > 0) {
-        while (n > 0 && head != null) {
-          n--;
-          head = head.next;
-        }
-        return head;
+      if (quick == null){
+        return head.next;
       }
       ListNode temp = head;
       while (quick.next != null) {
