@@ -1,100 +1,84 @@
 package com.impassive.alg.datastructure;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 import java.util.Random;
 
 /** @author impassivey */
-public class SkipList<T, V> {
+public class SkipList {
 
   private static final Random RANDOM = new Random();
 
+  private static final int MAX_LEVEL = 128;
+
   /** 保存头部的信息 */
-  private final SkipNode head;
+  private final Node head;
 
   /** 保存尾部的信息 */
-  private final SkipNode tail;
+  private final Node tail;
 
   public SkipList() {
-    head = new SkipNode();
-    tail = new SkipNode();
+    head = new Node(1, -1);
+    tail = new Node(1, -1);
     head.next = tail;
     tail.prev = head;
   }
 
-  public void add(T key, V value) {
-    SkipNode skipNode = searchSkipNode(key, value);
-    if (skipNode == null) {
-
-      return;
-    }
-    if (skipNode.equals(key, value)) {}
+  public void add(Integer value) {
+    int level = randomLevel();
+    Node node = new Node(level, value);
   }
 
-  public V search(T key) {
+  public Integer search(Integer key) {
     if (head == null) {
       return null;
     }
-    return head.node.value;
+    return head.data;
   }
 
-  public V searchRev(T key) {
+  public Integer searchRev(Integer key) {
     if (tail == null) {
       return null;
     }
-    return tail.node.value;
+    return tail.data;
   }
 
   /**
    * 根据key和value查找对应的节点。如果找到了key相同的对象，则会比较value的值，如果都想等，则直接返回，如果不想等，就返回最接近的前一个对象。
    *
-   * @param key 需要查找的key
    * @param value 需要查找的value
    * @return 返回的对象
    */
-  private SkipNode searchSkipNode(T key, V value) {
+  private Node searchSkipNode(Integer value) {
     return null;
   }
 
-  private boolean addLayer() {
-    return RANDOM.nextBoolean();
+  private int randomLevel() {
+    return RANDOM.nextInt(MAX_LEVEL) + 1;
   }
 
-  class SkipNode {
+  static class Node {
 
-    protected Node node;
+    protected Integer data;
 
-    protected SkipNode next;
+    protected Node next;
 
-    protected SkipNode prev;
+    protected Node prev;
+
+    protected Integer maxLevel;
 
     // 包含了每一层的数据信息
-    protected List<SkipNode> layer;
+    protected Node[] nodes;
 
-    public SkipNode() {
-      layer = new ArrayList<>();
+    public Node(Integer maxLevel, Integer data) {
+      this.maxLevel = maxLevel;
+      this.nodes = new Node[maxLevel];
+      this.data = data;
     }
 
-    public boolean equals(T key, V value) {
-      if (node == null) {
+    public boolean equals(Integer value) {
+      if (data == null) {
         return false;
       }
-      return node.equals(key, value);
-    }
-  }
-
-  class Node {
-    protected T key;
-    protected V value;
-
-    public Node(T key, V value) {
-      this.key = key;
-      this.value = value;
-    }
-
-    protected boolean equals(T key, V value) {
-      return Objects.equals(key, this.key) && Objects.equals(value, this.value);
+      return data.equals(value);
     }
   }
 }
