@@ -1,17 +1,15 @@
 package com.impassive.alg.datastructure;
 
-import lombok.Data;
-
 /** @author impassivey */
 public class ListNode {
 
-   int val;
+  int val;
 
-   ListNode next;
+  ListNode next;
 
   ListNode() {}
 
-  ListNode(int val) {
+  public ListNode(int val) {
     this.val = val;
   }
 
