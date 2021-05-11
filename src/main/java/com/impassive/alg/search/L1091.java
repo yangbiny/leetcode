@@ -1,9 +1,5 @@
 package com.impassive.alg.search;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import javafx.util.Pair;
-
 /** @author impassivey */
 public class L1091 {
 
@@ -20,7 +16,7 @@ public class L1091 {
     };
 
     public int shortestPathBinaryMatrix(int[][] grid) {
-      if (grid.length == 0 || grid[0].length == 0) {
+     /* if (grid.length == 0 || grid[0].length == 0) {
         return -1;
       }
       if (grid[0][0] == 1) {
@@ -56,7 +52,7 @@ public class L1091 {
             grid[nx][ny] = 1;
           }
         }
-      }
+      }*/
       return -1;
     }
   }
