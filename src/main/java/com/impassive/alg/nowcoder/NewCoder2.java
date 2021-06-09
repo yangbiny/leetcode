@@ -1,7 +1,6 @@
 package com.impassive.alg.nowcoder;
 
 import java.util.Arrays;
-import org.apache.commons.collections4.ArrayStack;
 
 /** @author impassivey */
 public class NewCoder2 {
