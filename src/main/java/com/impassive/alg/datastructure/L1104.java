@@ -55,7 +55,7 @@ public class L1104 {
 
         // 计算父节点行的信息
         max = min - 1;
-        length = (int) Math.pow(2, lines - 1);
+        length = length >> 2;
         min = (max - length) + 1;
 
         // 计算父节点的index
