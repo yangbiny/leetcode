@@ -18,6 +18,7 @@ public class L567 {
       }
       int[] cnt1 = new int[26];
       int[] cnt2 = new int[26];
+      // 先直接计算n的时候，每一个元素的个数
       for (int i = 0; i < n; ++i) {
         ++cnt1[s1.charAt(i) - 'a'];
         ++cnt2[s2.charAt(i) - 'a'];
@@ -25,8 +26,13 @@ public class L567 {
       if (Arrays.equals(cnt1, cnt2)) {
         return true;
       }
+
+      //长度为n 的一个滑动窗口。
+      // 计算长度为 n 的滑动窗口中，每一个元素的个数，与子串是否相同
       for (int i = n; i < m; ++i) {
+        // 新纳入的数据的个数加1
         ++cnt2[s2.charAt(i) - 'a'];
+        // 把窗口最前面的数据减1
         --cnt2[s2.charAt(i - n) - 'a'];
         if (Arrays.equals(cnt1, cnt2)) {
           return true;
