@@ -9,25 +9,25 @@ public class L3 {
 
   static class Solution {
     public int lengthOfLongestSubstring(String s) {
-      if (s.length() == 0) {
-        return 0;
+      if (s.length() <= 1) {
+        return s.length();
       }
-      String result = s.charAt(0) + "";
-      String tempResult = s.charAt(0) + "";
-      int n = s.length();
-      int beginIndex = 0;
-      for (int i = 1; i < n; i++) {
+      String result = "";
+      String tempResult = "";
+      int start = 0;
+      for (int i = 0; i < s.length(); i++) {
         String temp = "";
-        final int chatIndex = tempResult.indexOf(s.charAt(i));
-        if (chatIndex != -1) {
-          beginIndex = beginIndex + chatIndex + 1;
+        char charAt = s.charAt(i);
+        int indexOf = tempResult.indexOf(charAt);
+        if (indexOf > -1) {
+          start = start + indexOf + 1;
         }
-        if (beginIndex < i + 1) {
-          temp = s.substring(beginIndex, i + 1);
+        if (start < i + 1) {
+          temp = s.substring(start, i + 1);
         }
         tempResult = temp;
-        if (tempResult.length() >= result.length()){
-          result = tempResult;
+        if (tempResult.length() > result.length()){
+          result = temp;
         }
       }
       return result.length();
