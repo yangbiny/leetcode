@@ -1,7 +1,9 @@
 package com.impassive.words;
 
 import com.impassive.words.base.NodeStatus;
+import com.impassive.words.base.Range;
 import com.impassive.words.base.TrieTreeNode;
+import java.util.function.Consumer;
 import lombok.Getter;
 import org.apache.commons.lang3.StringUtils;
 
@@ -32,9 +34,27 @@ public class TrieTree {
   }
 
 
-  public void parseText(String text) {
+  public void parseText(String text, Consumer<Range> consumer) {
     if (StringUtils.isEmpty(text)) {
       return;
+    }
+    char[] chars = text.toCharArray();
+
+    for (int i = 0; i < chars.length; i++) {
+      TrieTreeNode trieTreeNode = root.searchNode(chars[i]);
+      if (trieTreeNode == null) {
+        continue;
+      }
+
+      for (int j = i + 1; j < chars.length; j++) {
+        trieTreeNode = trieTreeNode.searchNode(chars[j]);
+        if (trieTreeNode == null) {
+          break;
+        }
+        if (trieTreeNode.getStatus() == NodeStatus.words) {
+          consumer.accept(new Range(i, j));
+        }
+      }
     }
   }
 }

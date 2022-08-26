@@ -1,6 +1,7 @@
 package com.impassive.words.base;
 
 import it.unimi.dsi.fastutil.chars.Char2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 import lombok.Data;
 import lombok.Getter;
 import org.apache.commons.collections4.MapUtils;
@@ -25,5 +26,13 @@ public class TrieTreeNode {
     trieTreeNode.status = status;
     children.put(value, trieTreeNode);
     return trieTreeNode;
+  }
+
+  @Nullable
+  public TrieTreeNode searchNode(Character chars) {
+    if (MapUtils.isEmpty(children)) {
+      return null;
+    }
+    return children.get(chars.charValue());
   }
 }

@@ -1,36 +1,46 @@
 package com.impassive.words;
 
-import com.impassive.words.base.NodeStatus;
-import com.impassive.words.base.TrieTreeNode;
+import com.impassive.words.base.Range;
 import java.io.File;
 import java.io.IOException;
-import java.util.Map.Entry;
+import java.util.function.Consumer;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.LineIterator;
+import org.junit.Before;
 import org.junit.Test;
 
 public class TrieTreeTest {
 
-  private static final String dataPath = "/Volumes/workspace/admin/leetcode/data/test.txt";
+  private static final String dataPath = "/Volumes/workspace/admin/leetcode/data/CoreNatureDictionary.txt";
 
-  @Test
-  public void insert() throws IOException {
+  private TrieTree trieTree;
 
-    TrieTree trieTree = new TrieTree();
-
+  @Before
+  public void setUp() throws Exception {
+    trieTree = new TrieTree();
     LineIterator iterator = FileUtils.lineIterator(new File(dataPath));
     while (iterator.hasNext()) {
       String next = iterator.nextLine();
       String[] s = next.split("\t");
       trieTree.insert(s[0].trim());
     }
+  }
 
+  @Test
+  public void insert() throws IOException {
 
-    for (Entry<Character, TrieTreeNode> entry : trieTree.getRoot().getChildren().entrySet()) {
-      if (entry.getValue().getStatus() != NodeStatus.normal){
-        continue;
+  }
+
+  @Test
+  public void testParse() {
+
+    String text = "这个东西是用来测试一号机器是否正确";
+    trieTree.parseText(text, new Consumer<Range>() {
+      @Override
+      public void accept(Range range) {
+        String substring = text.substring(range.getBegin(), range.getEnd() + 1);
+        System.out.println(substring);
       }
-      System.out.println(entry);
-    }
+    });
   }
 }
