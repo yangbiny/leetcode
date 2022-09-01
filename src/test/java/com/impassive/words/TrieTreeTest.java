@@ -28,6 +28,16 @@ public class TrieTreeTest {
 
   @Test
   public void insert() throws IOException {
+  }
+
+  @Test
+  public void testContains() {
+    String test = "test";
+    boolean contains = trieTree.contains(test);
+    System.out.println(contains);
+    trieTree.insert(test);
+    contains = trieTree.contains(test);
+    System.out.println(contains);
 
   }
 

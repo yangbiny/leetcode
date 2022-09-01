@@ -33,6 +33,21 @@ public class TrieTree {
 
   }
 
+  public boolean contains(String word) {
+    if (StringUtils.isEmpty(word)) {
+      return false;
+    }
+
+    char[] chars = word.toCharArray();
+    TrieTreeNode node = root;
+    for (char aChar : chars) {
+      if (node == null) {
+        break;
+      }
+      node = node.searchNode(aChar);
+    }
+    return node != null && node.checkIsWords();
+  }
 
   public void parseText(String text, Consumer<Range> consumer) {
     if (StringUtils.isEmpty(text)) {
