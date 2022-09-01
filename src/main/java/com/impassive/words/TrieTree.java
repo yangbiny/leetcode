@@ -51,7 +51,7 @@ public class TrieTree {
         if (trieTreeNode == null) {
           break;
         }
-        if (trieTreeNode.getStatus() == NodeStatus.words) {
+        if (trieTreeNode.checkIsWords()) {
           consumer.accept(new Range(i, j));
         }
       }

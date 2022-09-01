@@ -2,16 +2,12 @@ package com.impassive.words.base;
 
 import it.unimi.dsi.fastutil.chars.Char2ObjectOpenHashMap;
 import javax.annotation.Nullable;
-import lombok.Data;
-import lombok.Getter;
 import org.apache.commons.collections4.MapUtils;
 
-@Data
 public class TrieTreeNode {
 
   private NodeStatus status;
 
-  @Getter
   private Char2ObjectOpenHashMap<TrieTreeNode> children;
 
   public TrieTreeNode insert(char value, NodeStatus status) {
@@ -34,5 +30,9 @@ public class TrieTreeNode {
       return null;
     }
     return children.get(chars.charValue());
+  }
+
+  public boolean checkIsWords() {
+    return this.status == NodeStatus.words;
   }
 }
